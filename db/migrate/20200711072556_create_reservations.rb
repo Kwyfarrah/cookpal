@@ -3,10 +3,11 @@ class CreateReservations < ActiveRecord::Migration[6.0]
     create_table :reservations do |t|
       t.datetime :datetime
       t.string :address
-      t.interger :capacity
+      t.integer :capacity
       t.text :description
+      t.boolean :status
       t.references :user, null: false, foreign_key: true
-      t.refernces :homecook
+      t.references :homecook, null: false, foreign_key: true
 
       t.timestamps
     end
