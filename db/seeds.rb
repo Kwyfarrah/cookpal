@@ -32,6 +32,7 @@ end
 puts 'Finished'
 
 puts 'Creating 5 homecooks record.'
+i = 0
 5.times do |i|
   homecook = Homecook.create(
     price_per_person: [2000,3000,4000,5000,10000,20000].sample
