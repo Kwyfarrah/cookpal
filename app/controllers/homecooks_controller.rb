@@ -1,0 +1,2 @@
+class HomecooksController < ApplicationController
+end
