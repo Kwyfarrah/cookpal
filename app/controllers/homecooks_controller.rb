@@ -6,7 +6,7 @@ class HomecooksController < ApplicationController
     search = params['search']
     if search.present?
       @address = search['query']
-      @homecooks = User.where("address ILIKE ?", "%#{@address}%").each do |user|
+      @homcooks = User.where("address ILIKE ?", "%#{@address}%").map do |user|
         user.homecooks
       end
     else
