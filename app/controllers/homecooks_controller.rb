@@ -3,8 +3,9 @@ class HomecooksController < ApplicationController
   before_action :find_homecook, only: [:destroy]
 
   def index
+    search = params['search']
     if search.present?
-      @name = search['query']
+      @address = search['query']
       @homecooks = User.where("address ILIKE ?", "%#{@address}%").homecook
     else
       @homecooks = Homecook.all
