@@ -1,1 +1,45 @@
-index.html.erb
+<div class="banner-narrow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cooking&<%= rand(10000) %>)">
+  <div class="container">
+    <h1>Find Your Home Cook</h1>
+    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <div class="search-bar">
+        <input class="search-field" type="text" name="search[query]" id="search_query" placeholder="Type address" />
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle add-time" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add time
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Brunch</a>
+    <a class="dropdown-item" href="#">Lunch</a>
+    <a class="dropdown-item" href="#">Dinner</a>
+  </div>
+</div>
+        <button name="button" type="submit" class="btn btn-homecook-small">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class = 'container'>
+  <div class="cards">
+  <% @homecooks.each do |homecook| %>
+   <div class="card-category">
+  <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?meals&<%= rand(10000) %>)">
+    <!-- price: <%= homecook.price_per_person %> -->
+  </div>
+  <div class="card-details">
+  <div>Name</div>
+  <div><%= rand(3..5) %><i class="fas fa-star"></i></div>
+  </div>
+  <div class="card-details">
+  <div>Category</div>
+  <div>price: <%= homecook.price_per_person %></div>
+  </div>
+  </div>
+  <% end %>
+
+  </div>
+</div>
+
