@@ -11,8 +11,12 @@
   color: white;
 }
 
-.btn_seemore{
+.btn_seemore .btn-update-homecook{
   text-align: center;
+}
+
+.frame-btn{
+  margin-top: 24px;
 }
 
 .btn-reservations{
@@ -36,6 +40,7 @@
     opacity: 1;
     box-shadow: 0 2px white;
   }
+ }
 
 .btn-homecook-small{
   padding: 8px;

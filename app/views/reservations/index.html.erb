@@ -1,17 +1,23 @@
 <div class="container">
   <div class="frame-btn">
-  <button class="btn-reservations active" id="homecook-btn">Homecook</button>
-  <button class="btn-reservations" id="customer-btn">Customer</button>
- </div>
+    <button class="btn-reservations active" id="homecook-btn">Homecook</button>
+    <button class="btn-reservations" id="customer-btn">Customer</button>
+  </div>
 
   <div class="reservations-tabs">
     <div class="homecook-tab">
       <p>You have no reservations yet...</p>
+      <div class="btn-update-homecook">
+        <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Update your profile</a>
+      </div>
     </div>
 
 
     <div class="customer-tab">
 
     </div>
+
   </div>
 </div>
+
+<%= render "create_homecook" %>

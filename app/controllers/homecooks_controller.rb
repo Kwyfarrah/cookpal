@@ -1,15 +1,13 @@
 class HomecooksController < ApplicationController
-  before_action :find_user, only: [:create, :update]
+  before_action :find_user, only: [:update]
   before_action :find_homecook, only: [:destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     search = params['search']
     if search.present?
-      @address = search['query']
-      @homcooks = User.where("address ILIKE ?", "%#{@address}%").map do |user|
-        user.homecooks
-      end
+      @address = params['search']
+      @homecooks = Homecook.joins(:user).where("users.address ILIKE ?", "%#{@address}%")
     else
       @homecooks = Homecook.all
     end
@@ -20,9 +18,9 @@ class HomecooksController < ApplicationController
 
   def create
     @homecook = Homecook.new(home_params)
-    # @homecook.user = @user
+    @homecook.user_id = current_user
     @homecook.save
-    redirect_to homecook_path(@cocktail)
+    redirect_to reservations_path
   end
 
   def edit
@@ -48,7 +46,7 @@ class HomecooksController < ApplicationController
     @homecook = Homecook.find(params[:id])
   end
 
-  def cock_params
+  def home_params
     params.require(:homecook).permit(:price_per_person, :user_id, :introduction)
   end
 end
