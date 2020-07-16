@@ -30,12 +30,12 @@
     <!-- price: <%= homecook.price_per_person %> -->
   </div>
   <div class="card-details">
-  <div>Name</div>
+  <div><%= homecook.user.name %></div>
   <div><%= rand(3..5) %><i class="fas fa-star"></i></div>
   </div>
   <div class="card-details">
-  <div>Category</div>
-  <div>price: <%= homecook.price_per_person %></div>
+  <div><%= homecook.tag_list %></div>
+  <div><%= homecook.price_per_person %>yen/person</div>
   </div>
   </div>
   <% end %>
