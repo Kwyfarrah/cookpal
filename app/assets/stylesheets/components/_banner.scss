@@ -19,3 +19,18 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.banner-narrow {
+  margin-bottom:30px;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
+}
+
+.banner-narrow h1{
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+  font-family: 'Rowdies', cursive;
+}

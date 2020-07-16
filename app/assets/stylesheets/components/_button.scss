@@ -2,12 +2,12 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: #F7B500;
   transition: background 0.3s ease;
 }
 
 .btn-homecook:hover {
-  background: #1BCB7F;
+  background: #ffc65a;
   color: white;
 }
 
@@ -36,4 +36,20 @@
     opacity: 1;
     box-shadow: 0 2px white;
   }
+
+.btn-homecook-small{
+  padding: 8px;
+  color: white;
+  border-radius: 4px;
+  background: #F7B500;
+  transition: background 0.3s ease;
+}
+
+.btn-homecook-small:hover {
+  background: #ffc65a;
+  color: white;
+}
+
+.add-time {
+  padding:8px;
 }
