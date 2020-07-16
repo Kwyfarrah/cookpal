@@ -45,3 +45,27 @@ require 'faker'
 #   homecook.photo.attach(io: file, filename: 'image.png', content_type: 'image/png')
 # end
 # puts 'Finished!'
+
+puts 'Creating 5 reservations record for homecook:11.'
+4.times do
+  Reservation.create(
+    datetime: Faker::Date.in_date_period(year: 2020, month: 8),
+    address: Faker::Address.full_address,
+    capacity: [10,4,8,6,9].sample,
+    description: ['With baby','One vegetarian','We all like Meat','allergic to nuts'].sample,
+    status: ['accept','reject','pending'].sample,
+    user_id: [11,12,13,14,15].sample,
+    homecook_id: 11
+    )
+end
+
+  Reservation.create(
+    datetime: Faker::Date.in_date_period(year: 2020, month: 8),
+    address: Faker::Address.full_address,
+    capacity: [10,4,8,6,9].sample,
+    description: ['With baby','One vegetarian','We all like Meat','allergic to nuts'].sample,
+    status:'pending',
+    user_id: [11,12,13,14,15].sample,
+    homecook_id: 11
+    )
+puts 'Finished!'
