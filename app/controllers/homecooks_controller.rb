@@ -1,6 +1,7 @@
 class HomecooksController < ApplicationController
   before_action :find_user, only: [:create, :update]
   before_action :find_homecook, only: [:destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     search = params['search']
