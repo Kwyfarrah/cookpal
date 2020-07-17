@@ -1,15 +1,15 @@
 class HomecooksController < ApplicationController
   before_action :find_user, only: [:create, :update]
-  before_action :find_homecook, only: [:destroy]
+  before_action :find_homecook, only: [:edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     search = params['search']
     if search.present?
       @address = params['search']
-      @homecooks = Homecook.joins(:user).where("users.address ILIKE ?", "%#{@address}%")
+      @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
     else
-      @homecooks = Homecook.all
+      @homecooks = policy_scope(Homecook)
     end
   end
 
@@ -17,23 +17,26 @@ class HomecooksController < ApplicationController
   end
 
   def create
-    @homecook = Homecook.new(home_params)
-    # @homecook.user = @user
+    @homecook = Homecook.new(homecook_params)
+    @homecook.user = current_user
+    authorize @homecook
+
     @homecook.save
-    redirect_to homecook_path(@cocktail)
+    redirect_to homecook_path(@homecook) #,notice:'Your homecook was successfully created.'
   end
 
   def edit
   end
 
   def update
-    @homecook.update(task_params)
+    @homecook.update(homecook_params)
     redirect_to homecooks_path
+    authorize @homecook #,notice:'Your homecook was successfully edited.'
   end
 
   def destroy
     @homecook.destroy
-    redirect_to homecooks_path
+    redirect_to homecooks_path #,notice:'Your homecook was successfully deleted.'
   end
 
   private
@@ -44,9 +47,10 @@ class HomecooksController < ApplicationController
 
   def find_homecook
     @homecook = Homecook.find(params[:id])
+    authorize @homecook
   end
 
-  def cock_params
+  def homecook_params
     params.require(:homecook).permit(:price_per_person, :user_id, :introduction)
   end
 end
