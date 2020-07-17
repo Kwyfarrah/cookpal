@@ -55,7 +55,7 @@ puts 'Creating 5 reservations record for homecook:11.'
     description: ['With baby','One vegetarian','We all like Meat','allergic to nuts'].sample,
     status: ['accept','reject','pending'].sample,
     user_id: [11,12,13,14,15].sample,
-    homecook_id: 11
+    homecook_id: Homecook.joins(:user).find_by("users.email = ?", "homecook@lewagon.com").id
     )
 end
 
@@ -66,6 +66,6 @@ end
     description: ['With baby','One vegetarian','We all like Meat','allergic to nuts'].sample,
     status:'pending',
     user_id: [11,12,13,14,15].sample,
-    homecook_id: 11
+    homecook_id: Homecook.joins(:user).find_by("users.email = ?", "homecook@lewagon.com").id
     )
 puts 'Finished!'
