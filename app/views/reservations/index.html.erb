@@ -5,12 +5,24 @@
   </div>
 
   <div class="reservations-tabs">
-    <div class="homecook-tab">
-      <p>You have no reservations yet...</p>
-      <div class="btn-update-homecook">
-        <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Update your profile</a>
+    <div class="homecook-tab booked <%= 'active' if current_user.reservations  %> ">
+      <p>Received Orders</p>
+      <div class="card-booking">
+
       </div>
     </div>
+
+    <div class="homecook-tab new-homecook <%= 'active' if current_user.homecooks %>">
+      <p>You have no reservations yet...</p>
+    </div>
+
+    <div class="homecook-tab non-booked <%= 'active' if current_user.homecooks && !current_user.reservations %>">
+      <p>Become homecook!</p>
+      <div class="btn-update-homecook">
+        <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Update your homecook</a>
+      </div>
+    </div>
+
 
 
     <div class="customer-tab">

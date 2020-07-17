@@ -17,9 +17,10 @@ class HomecooksController < ApplicationController
   end
 
   def create
-    @homecook = Homecook.new(home_params)
-    @homecook.user_id = current_user
+    @homecook = Homecook.new(homecook_params)
+    @homecook.user = current_user
     @homecook.save
+    raise
     redirect_to reservations_path
   end
 
@@ -46,7 +47,7 @@ class HomecooksController < ApplicationController
     @homecook = Homecook.find(params[:id])
   end
 
-  def home_params
+  def homecook_params
     params.require(:homecook).permit(:price_per_person, :user_id, :introduction)
   end
 end

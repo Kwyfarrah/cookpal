@@ -9,4 +9,6 @@ const updateNavbar = () =>{
   }
 };
 
+
+
 export { updateNavbar };
