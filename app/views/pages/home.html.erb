@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cooking&<%= rand(10000) %>)">
   <div class="container">
-    <h1>Banner mesages</h1>
-    <p>Something to write</p>
+    <h1>Let Me Cook For You</h1>
+    <p>Find your homecook here</p>
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-form-control form-group">
         <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Type address" />
@@ -12,22 +12,30 @@
     <% end %>
   </div>
 </div>
-
-<h2 style="text-align: center">The most Liked</h2>
-<div class="container">
+<div class="title">
+<h2 style="text-align: center" >The most Liked</h2>
+</div>
+<div class = 'container'>
   <div class="cards">
-    <div class="card">
-      <div class="flex-top">
-        <div>Name</div>
-        <div>Rate</div>
-      </div>
-      <div class="flex-down">
-        <div>Category</div>
-        <div>Price</div>
-      </div>
-    </div>
+  <% @homecooks.each do |homecook| %>
+   <div class="card-category">
+  <div class="card-img" style="background-image: url(https://source.unsplash.com/featured/?meals&<%= rand(10000) %>)">
+    <!-- price: <%= homecook.price_per_person %> -->
+  </div>
+  <div class="card-details">
+  <div><%= homecook.user.name %></div>
+  <div><%= rand(40..50)/10.0 %><i class="fas fa-star"></i></div>
+  </div>
+  <div class="card-details">
+  <div><%= homecook.tag_list %></div>
+  <div><%= homecook.price_per_person %>yen/person</div>
+  </div>
+  </div>
+  <% end %>
+
   </div>
 </div>
+
 <div class="btn_seemore">
-  <a class="btn btn-homecook" href="#" style="text-align: center">See more</a>
+  <a class="btn btn-homecook" href="#" style="text-align: center">See more<i class="fas fa-chevron-right"></i></a>
 </div>
