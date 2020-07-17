@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { updateNavbar } from '../components/navbar';
+import { activateButton } from '../components/button';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 // Internal imports, e.g:
@@ -34,6 +35,6 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   updateNavbar();
+  activateButton();
   initUpdateNavbarOnScroll();
-
 });

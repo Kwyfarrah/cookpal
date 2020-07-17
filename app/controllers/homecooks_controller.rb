@@ -1,4 +1,6 @@
 class HomecooksController < ApplicationController
+  before_action :find_user, only: [:update]
+  before_action :find_homecook, only: [:destroy]
   before_action :find_user, only: [:create, :update]
   before_action :find_homecook, only: [:edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
@@ -19,6 +21,9 @@ class HomecooksController < ApplicationController
   def create
     @homecook = Homecook.new(homecook_params)
     @homecook.user = current_user
+    @homecook.save
+    raise
+    redirect_to reservations_path
     authorize @homecook
 
     @homecook.save
