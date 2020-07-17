@@ -1,10 +1,47 @@
 html {
   position: relative;
   top: -16px;
+  margin-bottom:-20px;
 }
 
 
 .fa-star:before {
   font-size:13px;
   color: #F7B500;
+}
+
+.fa-chevron-right {
+  font-size:13px;
+  margin-left:10px;
+}
+
+.fa-facebook-f, .fa-twitter, .fa-instagram{
+  color:white;
+  font-size:18px;
+}
+h1 {
+  font-family: 'Rowdies', cursive;
+}
+
+.title{
+  font-size:32px;
+  margin: 30px auto;
+  text-align:center;
+  color: white;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1)
+
+}
+
+.title h2 {
+  display:inline-block;
+  font-family: 'Rowdies', cursive;
+  color: #424242;
+  padding: 0 20px;
+  background:linear-gradient(transparent 55%, rgba(247, 181, 0, 0.8) 45%);
+  border-bottom:3px solid #FA6400;
+}
+
+*:focus {
+    outline: none;
 }
