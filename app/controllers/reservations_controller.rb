@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
     @homecook = Homecook.new
+    @reservations = policy_scope(Reservation)
   end
 
 end

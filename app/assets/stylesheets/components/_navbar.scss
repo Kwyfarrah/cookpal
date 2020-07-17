@@ -7,10 +7,35 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar {
+  height:75px;
+  padding:20px;
 }
+
+.navbar-fixed {
+  height:75px;
+  padding:20px;
+  position:fixed;
+  width:100%;
+}
+
+.nav-link{
+  position:relative;
+  top:6px;
+  font-weight:600;
+  font-size:18px;
+}
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
 
 .displayNone{
   display: none;
+}
+
+.nav-img {
+  width:160px;
+  position:relative;
+  top:6px;
 }
