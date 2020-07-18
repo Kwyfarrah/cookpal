@@ -8,43 +8,43 @@
 
 require 'faker'
 
-# puts 'Creat a new user...'
-# main_user = User.create(
-#   name: Faker::Name.name,
-#   email: 'homecook@lewagon.com',
-#   address: Faker::Address.full_address,
-#   phone: Faker::PhoneNumber.cell_phone,
-#   password: '123456')
-# puts 'Finished'
+puts 'Creat a new user...'
+main_user = User.create(
+  name: Faker::Name.name,
+  email: 'homecook@lewagon.com',
+  address: Faker::Address.full_address,
+  phone: Faker::PhoneNumber.cell_phone,
+  password: '123456')
+puts 'Finished'
 
-# puts 'Creating 4 other fake user.'
-# 4.times do
-#     User.create(
-#     name: Faker::Name.name,
-#     email: Faker::Internet.email,
-#     address: Faker::Address.full_address,
-#     phone: Faker::PhoneNumber.cell_phone,
-#     password: Faker::Internet.password(min_length: 8)
-#   )
-# end
-# puts 'Finished'
+puts 'Creating 4 other fake user.'
+4.times do
+    User.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    address: Faker::Address.full_address,
+    phone: Faker::PhoneNumber.cell_phone,
+    password: Faker::Internet.password(min_length: 8)
+  )
+end
+puts 'Finished'
 
-# puts 'Creating 5 homecooks record.'
-# require "open-uri"
-# i = 0
-# 5.times do |i|
-#   homecook = Homecook.create(
-#     price_per_person: [2000,3000,4000,5000,10000,20000].sample,
-#     user_id: User.find(i+1).id,
-#     introduction:['I am is a Personal Chef with several areas of expertise.',
-#       'Enjoy cooking so much hope to help you!','Hi!I have been a homecook for 5 years already.',
-#       'Hi!I am a former 5 star hotels chef.','I am good at cooking for a party!'].sample,
-#     tag_list: ["Chinese", "Japanese", "Italian", "French","Brazilian"].sample
-#   )
-#   file = URI.open('https://images.unsplash.com/photo-1557499305-87bd9049ec2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')
-#   homecook.photo.attach(io: file, filename: 'image.png', content_type: 'image/png')
-# end
-# puts 'Finished!'
+puts 'Creating 5 homecooks record.'
+require "open-uri"
+i = 0
+5.times do |i|
+  homecook = Homecook.create(
+    price_per_person: [2000,3000,4000,5000,10000,20000].sample,
+    user_id: User.find(i+1).id,
+    introduction:['I am is a Personal Chef with several areas of expertise.',
+      'Enjoy cooking so much hope to help you!','Hi!I have been a homecook for 5 years already.',
+      'Hi!I am a former 5 star hotels chef.','I am good at cooking for a party!'].sample,
+    tag_list: ["Chinese", "Japanese", "Italian", "French","Brazilian"].sample
+  )
+  file = URI.open('https://images.unsplash.com/photo-1557499305-87bd9049ec2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')
+  homecook.photo.attach(io: file, filename: 'image.png', content_type: 'image/png')
+end
+puts 'Finished!'
 
 puts 'Creating 5 reservations record for homecook:11.'
 4.times do
