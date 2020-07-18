@@ -41,8 +41,6 @@ i = 0
       'Hi!I am a former 5 star hotels chef.','I am good at cooking for a party!'].sample,
     tag_list: ["Chinese", "Japanese", "Italian", "French","Brazilian"].sample
   )
-  file = URI.open('https://images.unsplash.com/photo-1557499305-87bd9049ec2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')
-  homecook.photo.attach(io: file, filename: 'image.png', content_type: 'image/png')
 end
 puts 'Finished!'
 
