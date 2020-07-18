@@ -50,6 +50,6 @@ class HomecooksController < ApplicationController
   end
 
   def homecook_params
-    params.require(:homecook).permit(:price_per_person, :user_id, :introduction)
+    params.require(:homecook).permit(:price_per_person, :user_id, :introduction, tag_list: [])
   end
 end
