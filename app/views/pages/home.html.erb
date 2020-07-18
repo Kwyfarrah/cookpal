@@ -19,21 +19,26 @@
   <div class="cards">
   <% @homecooks.each do |homecook| %>
    <div class="card-category">
-  <div class="card-img" style="background-image: url(https://source.unsplash.com/featured/?meals&<%= rand(10000) %>)">
-    <!-- price: <%= homecook.price_per_person %> -->
+  <% if homecook.photos.attached?%>
+  <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/kwy031820/image/upload/v1594131019/kpksf9o5vq8njg32zsgwuxbytvgt.jpg)">
+  <%else%>
+  <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?meals&<%= rand(10000) %>)">
   </div>
+  <% end %>
   <div class="card-details">
-  <div><b><%= homecook.user.name %></b></div>
+  <div><strong><%= homecook.user.name %></strong></div>
   <div><%= rand(40..50)/10.0 %><i class="fas fa-star"></i></div>
   </div>
   <div class="card-details">
-  <div><%= homecook.tag_list %></div>
-  <div><%= homecook.price_per_person %>yen/person</div>
+   <div><%= homecook.tag_list %>
   </div>
+  <div><%= homecook.price_per_person %>yen/person</div>
+   </div>
   </div>
   <% end %>
 
   </div>
+</div>
 </div>
 
 <div class="btn_seemore">
