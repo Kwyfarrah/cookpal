@@ -3,6 +3,7 @@ class HomecookPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
     def create?
       true
@@ -19,5 +20,4 @@ class HomecookPolicy < ApplicationPolicy
     def destroy?
       record.user == user
     end
-  end
 end
