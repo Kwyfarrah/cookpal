@@ -1,14 +1,22 @@
 .btn-homecook {
   color: white;
   padding: 8px 24px;
+  display: inline-block;
   border-radius: 4px;
   background: #F7B500;
   transition: background 0.3s ease;
+  margin-bottom: 8px;
+  margin-right: 16px;
 }
 
 .btn-homecook:hover {
   background: #ffc65a;
   color: white;
+}
+
+.delete-homecook{
+  background: #FFFFFF;
+  border: 1px solid #F7B500;
 }
 
 .btn_seemore .btn-update-homecook{
@@ -73,4 +81,30 @@
 
 .add-time {
   padding:8px;
+}
+
+.card-booking-buttons{
+  margin: 16px;
+}
+
+.accept, .reject{
+  background-color: #F4F4F4;
+  border: none;
+  &:hover{
+    background: #ffc65a;
+    color: white;
+    opacity: 0.8;
+  }
+  &:focus{
+    outline: 0;
+  }
+}
+
+.btn-updated{
+  background-color: #ffc65a;
+  color: white;
+}
+
+.homecook-buttons{
+  display: flex;
 }

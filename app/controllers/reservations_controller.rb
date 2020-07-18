@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
-  # skip_before_action :authenticate_user!, only:
+  # skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
+
   def index
     @reservations = Reservation.all
     @homecook = Homecook.new
@@ -9,16 +11,8 @@ class ReservationsController < ApplicationController
   def update
     query = params[:id]
     @reservation = Reservation.find(query)
-    status = params[:status]
-    if status == “accept”
-      @reservation.status = 'accept'
-      @reservation.save
-
-    else
-      @reservation.status = 'reject'
-      @reservation.save
-    end
-    redirect to reservations_path
     authorize @reservation
+    @reservation.status = params[:status]
+    @reservation.save
   end
 end
