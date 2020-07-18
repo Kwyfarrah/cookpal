@@ -25,7 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { updateNavbar } from '../components/navbar';
-import { activateButton } from '../components/button';
+import { activateButton, upadteReservationStatus } from '../components/button';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 // Internal imports, e.g:
@@ -37,4 +37,5 @@ document.addEventListener('turbolinks:load', () => {
   updateNavbar();
   activateButton();
   initUpdateNavbarOnScroll();
+  upadteReservationStatus();
 });
