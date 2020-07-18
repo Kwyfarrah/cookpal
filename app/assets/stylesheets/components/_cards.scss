@@ -8,20 +8,9 @@
   color:white;
 }
 
-.card-booking{
-  border-radius: 4px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-
-}
-
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
-    grid-template-columns: 1fr;
-  }
-  .card-booking{
     grid-template-columns: 1fr;
   }
 }
@@ -31,17 +20,11 @@
   .cards {
     grid-template-columns: 1fr;
   }
-  .card-booking{
-    grid-template-columns: 1fr;
-  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-  .card-booking{
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -51,18 +34,12 @@
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .card-booking{
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-  .card-booking{
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -111,5 +88,36 @@
   margin-top: -2px;
   }
 
+.card-booking{
+  border: 1px solid #F4F4F4;
+  margin-bottom: 8px;
+  color: $dark-gray;
+  border-radius: 3px;
+}
 
+.card-booking-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 16px;
 
+}
+
+.card-booking-personal-info-left{
+  display: flex;
+  flex-direction: column;
+}
+
+.card-booking-personal-info-right{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.card-booking-description{
+  border: 1px solid #F4F4F4;
+  background-color: #F4F4F4;
+  margin: 16px;
+  height: 60px;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
