@@ -5,21 +5,51 @@
   </div>
 
   <div class="reservations-tabs">
-    <div class="homecook-tab booked <%= 'active' if current_user.reservations  %> ">
+    <% homecook_reservations = [] %>
+    <% current_user.homecooks.each do |homecook| %>
+      <% homecook.reservations.each do |reservation| %>
+        <% homecook_reservations << reservation %>
+      <% end %>
+    <% end %>
+    <div class="homecook-tab booked <%= 'hidden' if homecook_reservations.length == 0  %> ">
       <p>Received Orders</p>
-      <div class="card-booking">
-
-      </div>
+      <% homecook_reservations.each do |reservation| %>
+        <div class="card-booking">
+          <div class="card-booking-container">
+            <div class="card-booking-personal-info-left">
+              <div><b><%= reservation.user.name %></b></div>
+              <div><i class="far fa-envelope"></i><%= reservation.user.email %><span><%= reservation.user.phone %></span></div>
+            </div>
+            <div class="card-booking-personal-info-right">
+              <div>Reservation Date: <%= reservation.datetime.to_s.split(" ").first %></div>
+              <div><%= reservation.user.address %></div>
+            </div>
+          </div>
+          <div class="card-booking-description"><%= reservation.description %></div>
+          <div class="card-booking-buttons" data-reservation="<%= reservation.id %>">
+            <button class="accept">Accept</button>
+            <button class="reject">Reject</button>
+          </div>
+        </div>
+      <% end %>
     </div>
 
-    <div class="homecook-tab new-homecook <%= 'active' if current_user.homecooks %>">
+    <div class="homecook-tab new-homecook <%= 'hidden' if homecook_reservations.length > 0 %>">
       <p>You have no reservations yet...</p>
+
     </div>
 
-    <div class="homecook-tab non-booked <%= 'active' if current_user.homecooks && !current_user.reservations %>">
-      <p>Become homecook!</p>
-      <div class="btn-update-homecook">
-        <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Update your homecook</a>
+    <div class="homecook-tab non-booked">
+      <% if current_user.homecooks.length == 0 %>
+        <p>Become homecook!</p>
+      <% end %>
+      <div class="homecook-buttons">
+        <div class="btn-update-homecook">
+          <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Become homecook</a>
+        </div>
+        <div class="btn-update-homecook">
+          <a class="btn btn-homecook delete-homecook" style="text-align: center">Delete homecook</a>
+        </div>
       </div>
     </div>
 

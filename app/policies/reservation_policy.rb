@@ -3,9 +3,10 @@ class ReservationPolicy < ApplicationPolicy
     def resolve
       scope.where(user: user)
     end
-
-    def index?
-      record.user == user
-    end
   end
+
+    def update?
+      true
+      # record.homecook == user
+    end
 end
