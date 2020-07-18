@@ -1,7 +1,5 @@
 class HomecooksController < ApplicationController
   before_action :find_user, only: [:update]
-  before_action :find_homecook, only: [:destroy]
-  before_action :find_user, only: [:create, :update]
   before_action :find_homecook, only: [:edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -21,22 +19,18 @@ class HomecooksController < ApplicationController
   def create
     @homecook = Homecook.new(homecook_params)
     @homecook.user = current_user
-    @homecook.save
-    raise
-    redirect_to reservations_path
     authorize @homecook
-
     @homecook.save
-    redirect_to homecook_path(@homecook) #,notice:'Your homecook was successfully created.'
+    redirect_to reservations_path #,notice:'Your homecook was successfully created.'
   end
 
   def edit
   end
 
   def update
+    authorize @homecook
     @homecook.update(homecook_params)
-    redirect_to homecooks_path
-    authorize @homecook #,notice:'Your homecook was successfully edited.'
+    redirect_to homecooks_path #,notice:'Your homecook was successfully edited.'
   end
 
   def destroy
@@ -56,6 +50,6 @@ class HomecooksController < ApplicationController
   end
 
   def homecook_params
-    params.require(:homecook).permit(:price_per_person, :user_id, :introduction)
+    params.require(:homecook).permit(:price_per_person, :user_id, :introduction, :photo, tag_list: [])
   end
 end
