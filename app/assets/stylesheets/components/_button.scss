@@ -100,6 +100,9 @@
   }
 }
 
+.btn-updated-accepted{
+  background-color: #F5B533;
+  opacity: 0.8;
 
 .search-form-control .btn {
   position: absolute;
@@ -111,6 +114,16 @@
 .btn-updated{
   background-color: #ffc65a;
   color: white;
+}
+
+.btn-updated-rejected{
+  background-color: $dark-gray;
+  opacity: 0.8;
+  color: white;
+}
+
+.disabled{
+  pointer-events: none;
 }
 
 .homecook-buttons{
