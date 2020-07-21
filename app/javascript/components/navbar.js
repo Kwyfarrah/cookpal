@@ -1,4 +1,4 @@
-const updateNavbar = () =>{
+const updateNavbar = () => {
   const loggedIn = document.querySelector(".logged-in");
   const navLink = document.querySelector(".nav-link");
   const dropdownIcon = document.querySelector(".dropdown-icon");
@@ -8,11 +8,6 @@ const updateNavbar = () =>{
     dropdownIcon.className = "nav-item dropdown-icon displayNone";
   }
 };
-
-
-
-export { updateNavbar };
-
 
 const initUpdateNavbarOnScroll = () => {
   const navbar = document.querySelector('.navbar-lewagon');
@@ -28,4 +23,4 @@ const initUpdateNavbarOnScroll = () => {
   }
 }
 
-export { initUpdateNavbarOnScroll };
+export { initUpdateNavbarOnScroll, updateNavbar };

@@ -100,9 +100,20 @@
   }
 }
 
-.btn-updated{
-  background-color: #ffc65a;
+.btn-updated-accepted{
+  background-color: #F5B533;
+  opacity: 0.8;
   color: white;
+}
+
+.btn-updated-rejected{
+  background-color: $dark-gray;
+  opacity: 0.8;
+  color: white;
+}
+
+.disabled{
+  pointer-events: none;
 }
 
 .homecook-buttons{

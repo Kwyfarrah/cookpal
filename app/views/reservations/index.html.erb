@@ -11,6 +11,7 @@
         <% homecook_reservations << reservation %>
       <% end %>
     <% end %>
+
     <div class="homecook-tab booked <%= 'hidden' if homecook_reservations.length == 0  %> ">
       <p>Received Orders</p>
       <% homecook_reservations.each do |reservation| %>
@@ -27,28 +28,28 @@
           </div>
           <div class="card-booking-description"><%= reservation.description %></div>
           <div class="card-booking-buttons" data-reservation="<%= reservation.id %>">
-            <button class="accept">Accept</button>
-            <button class="reject">Reject</button>
+            <% if reservation.status == "pending" %>
+              <button class="accept">Accept</button>
+              <button class="reject">Reject</button>
+            <% elsif reservation.status == "accept" %>
+              <button class="accept btn-updated-accepted disabled">Accepted</button>
+            <% elsif reservation.status == "reject" %>
+              <button class="reject btn-updated-rejected disabled">Rejected</button>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
 
-    <div class="homecook-tab new-homecook <%= 'hidden' if homecook_reservations.length > 0 %>">
+    <div class="homecook-tab new-homecook <%= 'hidden' if homecook_reservations.length > 0 || current_user.homecooks.length == 0 %>">
       <p>You have no reservations yet...</p>
 
     </div>
 
-    <div class="homecook-tab non-booked">
-      <% if current_user.homecooks.length == 0 %>
-        <p>Become homecook!</p>
-      <% end %>
+    <div class="homecook-tab non-booked <%= 'hidden' if current_user.homecooks.length > 0 %>">
       <div class="homecook-buttons">
         <div class="btn-update-homecook">
           <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Become homecook</a>
-        </div>
-        <div class="btn-update-homecook">
-          <a class="btn btn-homecook delete-homecook" style="text-align: center">Delete homecook</a>
         </div>
       </div>
     </div>

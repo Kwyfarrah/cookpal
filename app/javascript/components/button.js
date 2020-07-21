@@ -15,14 +15,14 @@ const activateButton = () => {
 };
 
 const updateAcceptButton = (eventTarget) => {
-  eventTarget.classList.add("btn-updated");
+  eventTarget.classList.add("btn-updated-accepted");
   eventTarget.classList.add("disabled");
   eventTarget.innerHTML = "Accepted"
   eventTarget.nextElementSibling.remove("btn-updated");
 };
 
 const updateRejectButton = (eventTarget) => {
-  eventTarget.classList.add("btn-updated");
+  eventTarget.classList.add("btn-updated-rejected");
   eventTarget.classList.add("disabled");
   eventTarget.innerHTML = "Rejected"
   eventTarget.previousElementSibling.remove("btn-updated");
@@ -51,31 +51,30 @@ const patchReservationStatusToReject = (reservationId, eventTarget) => {
     });
 };
 
+const targetReservationID = (btn) => {
+  btn.addEventListener("click", (event) => {
+  // target reservation id to update reservation status
+  const reservationId = event.currentTarget.parentNode.dataset.reservation;
+  const eventTarget = event.currentTarget;
+  console.log(eventTarget);
+  if (eventTarget.className.includes('accept')){
+    patchReservationStatusToAccept(reservationId, eventTarget);
+  } else if (eventTarget.className.includes('reject')){
+    patchReservationStatusToReject(reservationId, eventTarget);
+  }
+  });
+};
+
 const upadteReservationStatus = () => {
   const accepts = document.querySelectorAll(".accept");
   const rejects = document.querySelectorAll(".reject");
 
   accepts.forEach((accept) => {
-    accept.addEventListener("click", (event) => {
-    // target reservation id to update reservation status
-    const reservationId = event.currentTarget.parentNode.dataset.reservation;
-    const eventTarget = event.currentTarget;
-    // const result = patchReservationStatusToAccept(reservationId);
-    patchReservationStatusToAccept(reservationId, eventTarget);
-    // eventTarget.style.backgroundColor = "red"
-    });
+    targetReservationID(accept);
   });
 
   rejects.forEach((reject) => {
-    reject.addEventListener("click", (event) => {
-    const reservationId = event.currentTarget.parentNode.dataset.reservation;
-    const eventTarget = event.currentTarget;
-    // console.log(eventTarget);
-    // eventTarget.style.backgroundColor = "red"
-    patchReservationStatusToReject(reservationId, eventTarget);
-    // const result = patchReservationStatusToReject(reservationId);
-    // if (result) updateButton(eventTarget);
-    });
+    targetReservationID(reject);
   });
 
 };
