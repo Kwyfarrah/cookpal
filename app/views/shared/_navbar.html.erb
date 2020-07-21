@@ -13,7 +13,7 @@
         <%= link_to "Registration", new_user_registration_path, class: "nav-link" %>
         <%= link_to "Sign in", new_user_session_path, class: "nav-link nav-signin" %>
       </li>
-      <% if current_user.homecooks.length == 0 && controller_name != 'reservations' %>
+      <% if !current_user.nil? && current_user.homecooks.length == 0 && controller_name != 'reservations' %>
         <li class="nav-item">
           <%= link_to "Become homecook", reservations_path, class: "nav-link become-homecook" %>
         </li>
