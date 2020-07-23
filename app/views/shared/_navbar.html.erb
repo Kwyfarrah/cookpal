@@ -29,7 +29,10 @@
         <% end %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <% if current_user.homecooks.length > 0 %>
-            <%= link_to "My page", reservations_path, class: "dropdown-item" %>
+            <%= link_to "My reservations", reservations_path, class: "dropdown-item" %>
+          <% end %>
+          <% if signed_in? %>
+            <%= link_to "My Profile",  edit_user_registration_path, class: "dropdown-item" %>
           <% end %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
