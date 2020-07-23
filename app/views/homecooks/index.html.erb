@@ -32,15 +32,17 @@
     <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?meals&<%= rand(10000) %>)"></div>
     <% end %>
     <div class="card-details">
-      <div><strong><%= homecook.user.name %></strong></div>
+      <div><strong><%= link_to homecook.user.name, homecook_path(homecook) %></strong></div>
+
       <div><%= rand(40..50)/10.0 %><i class="fas fa-star"></i></div>
     </div>
     <div class="card-details">
       <div>
       <%= homecook.tag_list %>
       </div>
+       <div><%= homecook.price_per_person %>yen/person</div>
     </div>
-    <div><%= homecook.price_per_person %>yen/person</div>
+
   </div>
   <% end %>
 

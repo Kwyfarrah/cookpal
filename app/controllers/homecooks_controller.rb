@@ -1,6 +1,6 @@
 class HomecooksController < ApplicationController
   before_action :find_user, only: [:update]
-  before_action :find_homecook, only: [:edit, :destroy]
+  before_action :find_homecook, only: [:edit, :destroy, :show]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
