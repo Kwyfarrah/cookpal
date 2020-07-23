@@ -1,4 +1,4 @@
-<div class="customer-tab">
+<div class="customer-tab" id="cutomer-anchor">
   <div class="homecook-tab new-homecook <%= 'hidden' if current_user.reservations.length < 0 %>">
     <% if current_user.reservations.length == 0 %>
       <p>You did not book anything yet..</p>
