@@ -18,18 +18,18 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservaion = Reservation.new(reservation_params)
-    @reservaion.user = current_user
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
     @reservation.homecook = @homecook
     authorize @reservation
     @reservation.save
-    redirect_to homecook_path(@restaurant)
+    redirect_to homecook_path(@homecook)
   end
 
   private
 
   def find_homecook
-    @homecook = Homecook.find(params[:id])
+    @homecook = Homecook.find(params[:homecook_id])
     authorize @homecook
   end
 
