@@ -26,6 +26,25 @@ html {
   bottom:2px;
 }
 
+.fa-envelope:before {
+  position: relative;
+  top: 1px;
+  color: #ffc65a;
+}
+
+.fa-phone:before {
+  color: #ffc65a;
+}
+
+.fa-map-pin:before {
+  color: #ffc65a;
+}
+
+.fa-user:before {
+  font-size: 13px;
+  color: #ffc65a;
+}
+
 h1 {
   font-family: 'Rowdies', cursive;
 }
@@ -88,7 +107,8 @@ h1 {
   font-weight:600;
   font-size:30px;
   width:80%;
-  margin: 0 auto;
+  margin: 30px auto 0;
+
 }
 
 
@@ -96,3 +116,14 @@ h1 {
   display: none;
 }
 
+.medium-font {
+  font-size:18px;
+  color: black;
+}
+
+.text-medium {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 20px;
+  border-bottom: 1.5px solid #f7b500;
+}

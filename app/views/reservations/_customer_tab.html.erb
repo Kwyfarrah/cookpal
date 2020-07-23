@@ -9,18 +9,18 @@
         <div class="card-booking">
           <div class="card-booking-container">
             <div class="card-booking-personal-info-left">
-              <div><b><%= reservation.user.name %></b></div>
-              <div><i class="far fa-envelope"></i><%= reservation.user.email %><span><%= reservation.user.phone %></span></div>
+              <div class ="medium-font"><b><%= reservation.user.name %></b></div>
+              <div><i class="fas fa-envelope"></i>&thinsp;<%= reservation.user.email %>&emsp;<i class="fas fa-phone"></i>&thinsp;<span><%= reservation.user.phone %></span></div>
             </div>
             <div class="card-booking-personal-info-right">
               <div>Reservation Date: <%= reservation.datetime.to_s.split(" ").first %></div>
-              <div><%= reservation.user.address %></div>
+              <div><i class="fas fa-map-pin"></i>&thinsp;<%= reservation.user.address %>&emsp;<span>Size:<%= reservation.capacity %>&thinsp;<i class="fas fa-user"></i></span></div>
             </div>
           </div>
           <div class="card-booking-description"><%= reservation.description %></div>
           <div class="card-booking-buttons" data-reservation="<%= reservation.id %>">
             <% if reservation.status == "pending" %>
-              <button class="accept">Waiting for your homeccok answer</button>
+              <button class="accept">Pending request</button>
             <% elsif reservation.status == "accept" %>
               <button class="accept btn-updated-accepted disabled">Accepted</button>
             <% elsif reservation.status == "reject" %>
