@@ -20,7 +20,7 @@
           <div class="card-booking-description"><%= reservation.description %></div>
           <div class="card-booking-buttons" data-reservation="<%= reservation.id %>">
             <% if reservation.status == "pending" %>
-              <button class="reject btn-updated-rejected disabled">Waiting for your homeccok answer</button>
+              <button class="reject btn-updated-rejected disabled">Waiting for your homecook answer</button>
             <% elsif reservation.status == "accept" %>
               <button class="accept btn-updated-accepted disabled">Accepted</button>
             <% elsif reservation.status == "reject" %>
