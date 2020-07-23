@@ -6,6 +6,8 @@ ruby '2.6.5'
 #pundit
 gem 'pundit'
 
+#searchfeature
+gem 'pg_search', '~> 2.3.0'
 
 #cloudinary
 gem 'cloudinary', '~> 1.12.0'

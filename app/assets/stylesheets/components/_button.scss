@@ -103,6 +103,16 @@
 .btn-updated-accepted{
   background-color: #F5B533;
   opacity: 0.8;
+}
+.search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+  margin: 0;
+}
+.btn-updated{
+  background-color: #ffc65a;
   color: white;
 }
 
