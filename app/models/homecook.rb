@@ -17,4 +17,5 @@ class Homecook < ApplicationRecord
     }
 
   validates :price_per_person, presence: true, numericality: { only_integer: true}
+  validates :user_id, uniqueness: true
 end
