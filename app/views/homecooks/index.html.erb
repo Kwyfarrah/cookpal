@@ -24,7 +24,7 @@
 
 <div class = 'container'>
     <i class="fas fa-random"></i> Sort by
-    <select id="sort-price">
+    <select id="sort-price" onChange="myfunc(this.value)">
       <option value="">Price</option>
       <option value="ASC">Low to High</option>
       <option value="DESC">High to Low</option>
@@ -50,6 +50,11 @@
   </div>
   <% end %>
   </div>
+  <script type="text/javascript">
+    function myfunc(value) {
+      window.location.replace('/?option=' + value);
+    }
+  </script>
 </div>
 </div>
 

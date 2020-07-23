@@ -1,5 +1,5 @@
 const setGetParameter = () => {
-  const selected = document.querySelector('.sort-price');
+  const selected = document.querySelector('#sort-price');
 
   selected.addEventListener("change", (event) => {
    console.log('hi');
