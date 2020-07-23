@@ -15,20 +15,22 @@ const activateButton = () => {
   const customerBtn = document.getElementById("customer-btn");
   const customerTab = document.querySelector(".customer-tab-wrapper");
   const homecookTab = document.querySelector(".homecook-tab-wrapper");
-  homecookBtn.addEventListener("click", (event) => {
-    homecookBtn.classList.add("active");
-    customerBtn.classList.remove("active");
-    customerTab.classList.add("hidden");
-    homecookTab.classList.remove("hidden");
-  });
-
-  customerBtn.addEventListener("click", (event) => {
-    customerBtn.classList.add("active");
-    homecookBtn.classList.remove("active");
-    homecookTab.classList.add("hidden");
-    customerTab.classList.remove("hidden");
-  });
-
+  if (homecookBtn) {
+    homecookBtn.addEventListener("click", (event) => {
+      homecookBtn.classList.add("active");
+      customerBtn.classList.remove("active");
+      customerTab.classList.add("hidden");
+      homecookTab.classList.remove("hidden");
+    });
+  }
+  if (customerBtn) {
+    customerBtn.addEventListener("click", (event) => {
+      customerBtn.classList.add("active");
+      homecookBtn.classList.remove("active");
+      homecookTab.classList.add("hidden");
+      customerTab.classList.remove("hidden");
+    });
+  }
 };
 
 const updateAcceptButton = (eventTarget) => {

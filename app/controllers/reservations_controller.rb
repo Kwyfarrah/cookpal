@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
     @reservation.homecook = @homecook
     authorize @reservation
     @reservation.save
-    redirect_to reservations_path(anchor: "cutomer-anchor")
+    redirect_to reservations_path(tab: "customer")
   end
 
   private
