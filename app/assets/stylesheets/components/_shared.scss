@@ -127,3 +127,11 @@ h1 {
   font-size: 20px;
   border-bottom: 1.5px solid #f7b500;
 }
+
+.form-field:not(:last-child) {
+  margin-bottom:20px;
+}
+
+.text-small-bold {
+  font-weight:500;
+}
