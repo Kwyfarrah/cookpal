@@ -1,3 +1,16 @@
+<% if user_signed_in? %>
+  <div class="btn-update-homecook">
+   <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Reserve this homecook</a>
+  </div>
+  <%= render "reserve_homecook" %>
+<%else %>
+  <div class="btn-update-homecook">
+    <%= link_to "Sign up/Sign in before make a reservation", new_user_session_path, class:"btn btn-homecook",  style:"text-align: center"%>
+  </div>
+  <h2>
+
+
+<% end %>
 <h1 class = "title-left-black"><%= @homecook.user.name  %></h1>
 <div class = "title-middle" ><%= rand(40..50)/10.0 %><i class="fas fa-star big-star"></i></div>
 
@@ -16,6 +29,10 @@
 
   <div class = "title-middle-bold"> About Me </div>
   <div> <%= @homecook.introduction %> </div>
+
+
+
+
 
 
 

@@ -1,10 +1,11 @@
 class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
-  before_action :find_homecook, only:[:create]
+  before_action :find_homecook, only: [:create]
 
   def index
     @reservations = Reservation.all
+    @homecooks = current_user.homecooks
     @homecook = Homecook.new
     @reservations = policy_scope(Reservation)
   end
@@ -18,18 +19,18 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservaion = Reservation.new(reservation_params)
-    @reservaion.user = current_user
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
     @reservation.homecook = @homecook
     authorize @reservation
     @reservation.save
-    redirect_to homecook_path(@restaurant)
+    redirect_to reservations_path(anchor: "cutomer-anchor")
   end
 
   private
 
   def find_homecook
-    @homecook = Homecook.find(params[:id])
+    @homecook = Homecook.find(params[:homecook_id])
     authorize @homecook
   end
 

@@ -9,8 +9,11 @@ class ReservationPolicy < ApplicationPolicy
     true
     # record.homecook == user
   end
-
-  def create
+  def homecook?
+    # if the user has homecook_id or no?
+    user.homecook
+  end
+  def create?
     true
   end
 end

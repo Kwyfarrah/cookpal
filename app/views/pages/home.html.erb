@@ -4,7 +4,7 @@
     <p>Find your homecook here</p>
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
     <div class="search-form-control form-group">
-      <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Type address" />
+      <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Type any location, cuisine type, homecook name....." />
       <button name="button" type="submit" class="btn btn-homecook">
         <i class="fas fa-search"></i> Search
       </button>
@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class="title">
-  <h2 style="text-align: center" >The most Liked</h2>
+  <h2 style="text-align: center" >The latest homecooks</h2>
 </div>
 <div class = 'container'>
   <div class="cards">
@@ -40,5 +40,5 @@
 </div>
 
 <div class="btn_seemore">
-  <a class="btn btn-homecook" href="#" style="text-align: center">See more<i class="fas fa-chevron-right"></i></a>
+  <a class="btn btn-homecook" href="/homecooks" style="text-align: center">See more<i class="fas fa-chevron-right"></i></a>
 </div>
