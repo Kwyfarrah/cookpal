@@ -1,7 +1,7 @@
 <div class="container">
   <div class="frame-btn">
-    <button class="btn-reservations active" id="homecook-btn">Homecook</button>
-    <button class="btn-reservations" id="customer-btn">Customer</button>
+    <button class="btn-reservations <%= 'disabled' if current_user.homecooks.empty? %><%= 'active' if !current_user.homecooks.empty?  %>"  id="homecook-btn">Homecook</button>
+    <button class="btn-reservations <%= 'active' if current_user.homecooks.empty? %>" id="customer-btn">Customer</button>
   </div>
 
   <div class="reservations-tabs">
@@ -12,53 +12,12 @@
       <% end %>
     <% end %>
 
-    <div class="homecook-tab booked <%= 'hidden' if homecook_reservations.length == 0  %> ">
-      <p>Received Orders</p>
-      <% homecook_reservations.each do |reservation| %>
-        <div class="card-booking">
-          <div class="card-booking-container">
-            <div class="card-booking-personal-info-left">
-              <div><b><%= reservation.user.name %></b></div>
-              <div><i class="far fa-envelope"></i><%= reservation.user.email %><span><%= reservation.user.phone %></span></div>
-            </div>
-            <div class="card-booking-personal-info-right">
-              <div>Reservation Date: <%= reservation.datetime.to_s.split(" ").first %></div>
-              <div><%= reservation.user.address %></div>
-            </div>
-          </div>
-          <div class="card-booking-description"><%= reservation.description %></div>
-          <div class="card-booking-buttons" data-reservation="<%= reservation.id %>">
-            <% if reservation.status == "pending" %>
-              <button class="accept">Accept</button>
-              <button class="reject">Reject</button>
-            <% elsif reservation.status == "accept" %>
-              <button class="accept btn-updated-accepted disabled">Accepted</button>
-            <% elsif reservation.status == "reject" %>
-              <button class="reject btn-updated-rejected disabled">Rejected</button>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="homecook-tab new-homecook <%= 'hidden' if homecook_reservations.length > 0 || current_user.homecooks.length == 0 %>">
-      <p>You have no reservations yet...</p>
-
-    </div>
-
-    <div class="homecook-tab non-booked <%= 'hidden' if current_user.homecooks.length > 0 %>">
-      <div class="homecook-buttons">
-        <div class="btn-update-homecook">
-          <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Become homecook</a>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="customer-tab">
-
-    </div>
+  <div class="homecook-tab-wrapper <%= 'hidden' if current_user.homecooks.length == 0 %>">
+    <%= render partial: "homecook_tab", :locals => {:homecook_reservations => homecook_reservations} %>
+  </div>
+  <div class="customer-tab-wrapper <%= 'hidden' if current_user.homecooks.length !=0 %>">
+    <%= render partial: "customer_tab" %>
+  </div>
 
   </div>
 </div>

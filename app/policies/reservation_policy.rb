@@ -5,8 +5,13 @@ class ReservationPolicy < ApplicationPolicy
     end
   end
 
-    def update?
-      true
-      # record.homecook == user
-    end
+  def update?
+    true
+    # record.homecook == user
+  end
+
+  def homecook?
+    # if the user has homecook_id or no?
+    user.homecook
+  end
 end

@@ -1,0 +1,34 @@
+<div class="customer-tab">
+  <div class="homecook-tab new-homecook <%= 'hidden' if current_user.reservations.length < 0 %>">
+    <% if current_user.reservations.length == 0 %>
+      <p>You did not book anything yet..</p>
+    <% end %>
+
+    <% if current_user.reservations.length > 0 %>
+      <% current_user.reservations.each do |reservation| %>
+        <div class="card-booking">
+          <div class="card-booking-container">
+            <div class="card-booking-personal-info-left">
+              <div><b><%= reservation.user.name %></b></div>
+              <div><i class="far fa-envelope"></i><%= reservation.user.email %><span><%= reservation.user.phone %></span></div>
+            </div>
+            <div class="card-booking-personal-info-right">
+              <div>Reservation Date: <%= reservation.datetime.to_s.split(" ").first %></div>
+              <div><%= reservation.user.address %></div>
+            </div>
+          </div>
+          <div class="card-booking-description"><%= reservation.description %></div>
+          <div class="card-booking-buttons" data-reservation="<%= reservation.id %>">
+            <% if reservation.status == "pending" %>
+              <button class="accept">Waiting for your homeccok answer</button>
+            <% elsif reservation.status == "accept" %>
+              <button class="accept btn-updated-accepted disabled">Accepted</button>
+            <% elsif reservation.status == "reject" %>
+              <button class="reject btn-updated-rejected disabled">Rejected</button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
