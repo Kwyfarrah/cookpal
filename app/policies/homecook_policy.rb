@@ -10,7 +10,7 @@ class HomecookPolicy < ApplicationPolicy
     end
 
     def show?
-      true
+      true  # Anyone can view a restaurant
     end
 
     def update?

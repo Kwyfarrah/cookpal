@@ -10,7 +10,7 @@ class ReservationPolicy < ApplicationPolicy
     # record.homecook == user
   end
 
-  def create
+  def create?
     true
   end
 end
