@@ -16,9 +16,9 @@ class HomecooksController < ApplicationController
       else
         @homecooks = policy_scope(Homecook).search_info(search)
       end
+    else
+      @homecooks = policy_scope(Homecook)
     end
-    #   @address = params['search']
-    #   @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
   end
 
   def show

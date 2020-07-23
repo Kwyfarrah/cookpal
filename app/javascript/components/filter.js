@@ -1,8 +1,7 @@
 const setGetParameter = () => {
-  const selected = document.querySelector('#sort-price');
+  const selected = document.getElementById('sort-price');
 
   selected.addEventListener("change", (event) => {
-   console.log('hi');
    var url = window.location.href;
       var hash = location.hash;
       url = url.replace(hash, '');
