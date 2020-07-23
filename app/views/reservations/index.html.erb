@@ -1,6 +1,6 @@
 <div class="container">
   <div class="frame-btn">
-    <button class="btn-reservations <%= 'disabled' if current_user.homecooks.empty? %><%= 'active' if !current_user.homecooks.empty?  %>"  id="homecook-btn">Homecook</button>
+    <button class="btn-reservations <%= 'active' if !current_user.homecooks.empty? %>"  id="homecook-btn">Homecook</button>
     <button class="btn-reservations <%= 'active' if current_user.homecooks.empty? %>" id="customer-btn">Customer</button>
   </div>
 
