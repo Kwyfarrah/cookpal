@@ -1,5 +1,4 @@
-<div class="homecook-tab booked <%= 'hidden' if homecook_reservations.length == 0  %> ">
-  <p>Received Orders</p>
+<div class="homecook-tab booked <%# 'hidden' if homecook_reservations.length == 0  %> ">
   <% homecook_reservations.each do |reservation| %>
     <div class="card-booking">
       <div class="card-booking-container">
