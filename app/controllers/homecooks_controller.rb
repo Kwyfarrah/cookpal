@@ -1,17 +1,19 @@
 class HomecooksController < ApplicationController
   before_action :find_user, only: [:update]
-  before_action :find_homecook, only: [:show, :edit, :destroy]
+
+  before_action :find_homecook, only: [:edit, :destroy, :show]
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     search = params['search']
-    @homecooks = policy_scope(Homecook).search_info(search)
-    # if search.present?
+    if search.present?
+      @homecooks = policy_scope(Homecook).search_info(search)
+    else
+      @homecooks = policy_scope(Homecook)
+    end
     #   @address = params['search']
     #   @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
-    # else
-    #   @homecooks = policy_scope(Homecook)
-    # end
   end
 
   def show
