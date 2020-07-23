@@ -35,6 +35,7 @@ import { setGetParameter } from '../components/filter';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
   updateNavbar();
   activateButton();
   initUpdateNavbarOnScroll();

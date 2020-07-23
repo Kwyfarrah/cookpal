@@ -1,6 +1,8 @@
 class HomecooksController < ApplicationController
   before_action :find_user, only: [:update]
-  before_action :find_homecook, only: [:edit, :destroy]
+
+  before_action :find_homecook, only: [:edit, :destroy, :show]
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -8,25 +10,19 @@ class HomecooksController < ApplicationController
     if search.present?
       @address = params['search']
       if params['option'] == "ASC"
-        @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%").order('price_per_person ASC')
+        @homecooks = policy_scope(Homecook).search_info(search).order('price_per_person ASC')
       elsif params['option'] == "DESC"
-        @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%").order('price_per_person DESC')
+        @homecooks = policy_scope(Homecook).search_info(search).order('price_per_person DESC')
       else
-        @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
-      end
-
-    else
-      if params['option'] == "ASC"
-        @homecooks = policy_scope(Homecook).order('price_per_person ASC')
-      elsif params['option'] == "DESC"
-        @homecooks = policy_scope(Homecook).order('price_per_person DESC')
-      else
-        @homecooks = policy_scope(Homecook)
+        @homecooks = policy_scope(Homecook).search_info(search)
       end
     end
+    #   @address = params['search']
+    #   @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
   end
 
   def show
+    @reservation = Reservation.new
   end
 
   def create
