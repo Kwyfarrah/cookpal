@@ -27,6 +27,7 @@ import "bootstrap";
 import { updateNavbar } from '../components/navbar';
 import { activateButton, upadteReservationStatus } from '../components/button';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { setGetParameter } from '../components/filter';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   activateButton();
   initUpdateNavbarOnScroll();
   upadteReservationStatus();
+  setGetParameter();
 });

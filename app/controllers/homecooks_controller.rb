@@ -7,9 +7,22 @@ class HomecooksController < ApplicationController
     search = params['search']
     if search.present?
       @address = params['search']
-      @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
+      if params['option'] == "ASC"
+        @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%").order('price_per_person ASC')
+      elsif params['option'] == "DESC"
+        @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%").order('price_per_person DESC')
+      else
+        @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
+      end
+
     else
-      @homecooks = policy_scope(Homecook)
+      if params['option'] == "ASC"
+        @homecooks = policy_scope(Homecook).order('price_per_person ASC')
+      elsif params['option'] == "DESC"
+        @homecooks = policy_scope(Homecook).order('price_per_person DESC')
+      else
+        @homecooks = policy_scope(Homecook)
+      end
     end
   end
 
