@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
-  before_action :find_homecook, only: [:create]
+  before_action :find_homecook, only: [:update, :create]
 
   def index
     @reservations = Reservation.all
