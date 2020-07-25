@@ -2,13 +2,20 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit your homecook profile</h5>
+        <%= link_to "Delete", homecook_path(@homecooks[0]), data: { confirm: "Are you sure?" }, method: :delete  %>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <%= simple_form_for @homecooks[0], :url => "/homecooks/#{@homecooks[0].id}", :method => :patch  do |r|%>
+          <%= r.input :price_per_person %>
+          <%= r.input :introduction %>
+          <%= r.input :tag_list, as: :check_boxes, collection: [ "Chinese", "Japanese", "Italian", "French","Brazilian" ], label: 'Types of Cuisines' %>
+          <%= r.input :photos, as: :file, input_html: { multiple: true }  %>
+          <%= r.submit %>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
