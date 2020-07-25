@@ -6,17 +6,17 @@ class HomecooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    search = params['search']
+    @search = params['search']
     price = params['price']
     cuisine = params['cuisine']
 
-    if search.present? || cuisine.present?
+    if @search.present? || cuisine.present?
       if price == "ASC"
-        @homecooks = policy_scope(Homecook).order('price_per_person ASC').search_info("#{search} #{cuisine}")
+        @homecooks = policy_scope(Homecook).order('price_per_person ASC').search_info("#{@search} #{cuisine}")
       elsif price == "DESC"
-        @homecooks = policy_scope(Homecook).order('price_per_person DESC').search_info("#{search} #{cuisine}")
+        @homecooks = policy_scope(Homecook).order('price_per_person DESC').search_info("#{@search} #{cuisine}")
       else
-        @homecooks = policy_scope(Homecook).search_info("#{search} #{cuisine}")
+        @homecooks = policy_scope(Homecook).search_info("#{@search} #{cuisine}")
       end
     else
       @homecooks = policy_scope(Homecook)

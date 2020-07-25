@@ -10,8 +10,8 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "Registration", new_user_registration_path, class: "nav-link" %>
-        <%= link_to "Sign in", new_user_session_path, class: "nav-link nav-signin" %>
+        <%= link_to "Registration", new_user_registration_path, class: "nav-link", data: { turbolinks: false } %>
+        <%= link_to "Sign in", new_user_session_path, class: "nav-link nav-signin", data: { turbolinks: false } %>
       </li>
       <% if !current_user.nil? && current_user.homecooks.length == 0 && controller_name != 'reservations' %>
         <li class="nav-item">
@@ -23,7 +23,7 @@
         <%else%>
         Hi, <%= current_user.name %>
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag "profile_logo.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>

@@ -3,7 +3,7 @@
     <h1>Find Your Home Cook</h1>
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-bar">
-        <input class="search-field" type="text" name="search[query]" id="search_query" placeholder="Type cusine,address..." />
+        <input class="search-field" type="text" name="search[query]" id="search_query" value="<%=@search%>" placeholder="Type cusine,address..." />
         <button name="button" type="submit" class="btn btn-homecook-small">
           <i class="fas fa-search"></i> Search
         </button>
@@ -17,12 +17,13 @@
     <select id="sort-price">
       <option value="">Price</option>
       <option id="asc" value="ASC">Low to High</option>
-      <option id="desc" value="DESC">High to Low</option>
+      <option id="desc" value="DESC" if selected="selected">High to Low</option>
     </select>
 
     <i class="fas fa-filter"></i> Filter by
     <select id="filter-cuisine">
       <option value="">Cuisine</option>
+      <!-- Homecook::CUISINES.each -->
       <option id="Chinese" value="Chinese">Chinese</option>
       <option id="Japanese" value="Japanese">Japanese</option>
       <option id="Italian" value="Italian">Italian</option>
