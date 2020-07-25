@@ -84,7 +84,7 @@ const targetReservationID = (btn) => {
   });
 };
 
-const upadteReservationStatus = () => {
+const updateReservationStatus = () => {
   const accepts = document.querySelectorAll(".accept");
   const rejects = document.querySelectorAll(".reject");
 
@@ -98,4 +98,4 @@ const upadteReservationStatus = () => {
 
 };
 
-export { activateButton, upadteReservationStatus };
+export { activateButton, updateReservationStatus };

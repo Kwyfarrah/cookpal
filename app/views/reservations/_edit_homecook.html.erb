@@ -12,7 +12,7 @@
         <%= simple_form_for @homecooks[0], :url => "/homecooks/#{@homecooks[0].id}", :method => :patch  do |r|%>
           <%= r.input :price_per_person %>
           <%= r.input :introduction %>
-          <%= r.input :tag_list, as: :check_boxes, collection: [ "Chinese", "Japanese", "Italian", "French","Brazilian" ], label: 'Types of Cuisines' %>
+          <%= r.input :tag_list, as: :check_boxes, collection: Homecook::CUISINES, label: 'Types of Cuisines' %>
           <%= r.input :photos, as: :file, input_html: { multiple: true }  %>
           <%= r.submit %>
         <% end %>
