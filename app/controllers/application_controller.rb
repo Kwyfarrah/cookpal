@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :store_location, :authenticate_user!
+  before_action :store_location!,
+    unless: -> { devise_controller? || request.xhr? },
+    if: -> { request.get? && is_navigational_format? }
+  before_action :authenticate_user!, unless: :devise_controller? # prevents a circular redirect
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   include Pundit
@@ -27,21 +30,19 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def store_location
-    if(request.path != "/users/sign_in" &&
-      request.path != "/users/sign_up" &&
-      request.path != "/users/password/new" &&
-      request.path != "/users/password/edit" &&
-      request.path != "/users/confirmation" &&
-      request.path != "/users/sign_out" &&
-      !request.xhr? && !current_user) # don't store ajax calls
-      session[:previous_url] = request.fullpath
-    end
+  def store_location!
+    # from Devise::Controllers::StoreLocation
+    # :user is the scope
+    store_location_for(:user, request.fullpath)
   end
 
   def after_sign_in_path_for(resource)
     previous_path = session[:previous_url]
     session[:previous_url] = nil
     previous_path || root_path
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
   end
 end
