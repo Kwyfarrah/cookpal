@@ -9,8 +9,12 @@
         <div class="card-booking">
           <div class="card-booking-container">
             <div class="card-booking-personal-info-left">
-              <div class ="medium-font"><b><%= reservation.user.name %></b></div>
-              <div><i class="fas fa-envelope"></i>&thinsp;<%= reservation.user.email %>&emsp;<i class="fas fa-phone"></i>&thinsp;<span><%= reservation.user.phone %></span></div>
+              <div class ="medium-font"><b><%= reservation.homecook.user.name %></b></div>
+              <% if reservation.status == 'accept' %>
+                <div><i class="fas fa-envelope"></i>&thinsp;<%= reservation.homecook.user.email %>&emsp;<i class="fas fa-phone"></i>&thinsp;<span><%= reservation.user.phone %></span></div>
+              <% elsif reservation.status == 'pending' %>
+                <div class="booking-contact"><i class="fa fa-bell" aria-hidden="true"></i> Sending contact request</div>
+              <% end %>
             </div>
             <div class="card-booking-personal-info-right">
               <div>Reservation Date: <%= reservation.datetime.strftime("%Y-%m-%d %H:%M") %></div>

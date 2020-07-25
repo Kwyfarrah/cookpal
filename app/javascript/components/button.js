@@ -72,6 +72,7 @@ const patchReservationStatusToReject = (reservationId, eventTarget) => {
 
 const targetReservationID = (btn) => {
   btn.addEventListener("click", (event) => {
+    event.preventDefault();
   // target reservation id to update reservation status
   const reservationId = event.currentTarget.parentNode.dataset.reservation;
   const eventTarget = event.currentTarget;
