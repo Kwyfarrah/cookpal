@@ -15,7 +15,7 @@
           <div><i class="fas fa-envelope"></i>&thinsp;<%= reservation.user.email %>&emsp;<i class="fas fa-phone"></i>&thinsp;<span><%= reservation.user.phone %></span></div>
         </div>
         <div class="card-booking-personal-info-right">
-          <div>Reservation Date: <%= reservation.datetime.to_s.split(" ").first %></div>
+          <div>Reservation Date: <%= reservation.datetime.strftime("%Y-%m-%d %H:%M") %></div>
           <div><i class="fas fa-map-pin"></i>&thinsp;<%= reservation.user.address %>&emsp;<span>Size:<%= reservation.capacity %>&thinsp;<i class="fas fa-user"></i></span></div>
         </div>
       </div>

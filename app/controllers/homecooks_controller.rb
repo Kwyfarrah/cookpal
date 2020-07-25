@@ -7,21 +7,21 @@ class HomecooksController < ApplicationController
 
   def index
     search = params['search']
-    if search.present?
-       @homecooks_search = policy_scope(Homecook).search_info(search)
-    else
-       @homecooks_search = policy_scope(Homecook)
-    end
+    price = params['price']
+    cuisine = params['cuisine']
 
-    if params['option'] == "ASC"
-        @homecooks = @homecooks_search.order('price_per_person ASC')
-      elsif params['option'] == "DESC"
-        @homecooks = @homecooks_search.order('price_per_person DESC')
+    if search.present? || cuisine.present?
+      if price == "ASC"
+        @homecooks = policy_scope(Homecook).order('price_per_person ASC').search_info("#{search} #{cuisine}")
+      elsif price == "DESC"
+        @homecooks = policy_scope(Homecook).order('price_per_person DESC').search_info("#{search} #{cuisine}")
       else
-        @homecooks = @homecooks_search
+        @homecooks = policy_scope(Homecook).search_info("#{search} #{cuisine}")
+      end
+    else
+      @homecooks = policy_scope(Homecook)
     end
   end
-
 
   def show
     @reservation = Reservation.new

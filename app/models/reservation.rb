@@ -1,4 +1,7 @@
 class Reservation < ApplicationRecord
+  def start_time
+    self.datetime
+  end
   belongs_to :user
   belongs_to :homecook
 
