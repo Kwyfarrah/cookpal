@@ -20,7 +20,7 @@
           <%= r.input :address, label: "Place to cook", input_html: { value: current_user.address } %>
           <%= r.input :capacity, input_html: {value: r.object.capacity || '1'} , label: "Number of people"%>
           <%= r.input :description, label: "Let me know what you need", placeholder:"Please tell me about your kitchen size and any special request that you want."%>
-          <%= r.submit class: '' %>
+          <%= r.submit 'Reserve', class: 'yellow-button' %>
         <% end %>
       </div>
     </div>

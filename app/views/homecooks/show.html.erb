@@ -1,24 +1,26 @@
+
+
+<div class="header">
+<h1 class = "title-large-black"><%= @homecook.user.name  %></h1>
 <% if user_signed_in? %>
   <div class="btn-update-homecook">
-   <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Reserve this homecook</a>
+   <a class="btn btn-homecook btn-homecook-fixed" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Reserve this homecook</a>
   </div>
   <%= render "reserve_homecook" %>
 <%else %>
   <div class="btn-update-homecook">
     <%= link_to "Sign up/Sign in before making a reservation", new_user_registration_path, class:"btn btn-homecook",  style:"text-align: center"%>
   </div>
-  <h2>
-
-
 <% end %>
-<h1 class = "title-left-black"><%= @homecook.user.name  %></h1>
-<div class = "title-middle" ><%= rand(40..50)/10.0 %><i class="fas fa-star big-star"></i></div>
+</div>
+
+<div class = "title-middle" ><%= rand(40..50)/10.0 %><i class="fas fa-star big-star"></i>&emsp;<span><%= @homecook.tag_list %></span></div>
 
   <div class= "image-block">
     <% if @homecook.photos.attached? %>
 
     <% @homecook.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height:200, width:250, crop: :fill, :class => "style_image" %>
+    <%= cl_image_tag photo.key, height:200, width:265, crop: :fill, :class => "style_image" %>
     <% end %>
     <% else %>
     <img src="https://source.unsplash.com/featured/?meals&<%= rand(10000) %>" alt="" width="picture" height="300", width="400" border="0" />

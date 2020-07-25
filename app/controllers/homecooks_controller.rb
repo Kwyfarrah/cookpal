@@ -1,7 +1,7 @@
 class HomecooksController < ApplicationController
-  before_action :find_user, only: [:update]
+  # before_action :find_user, only: [:update]
 
-  before_action :find_homecook, only: [:edit, :destroy, :show]
+  before_action :find_homecook, only: [:edit, :destroy, :show, :update]
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -41,7 +41,7 @@ class HomecooksController < ApplicationController
   def update
     authorize @homecook
     @homecook.update(homecook_params)
-    redirect_to homecooks_path #,notice:'Your homecook was successfully edited.'
+    redirect_to reservations_path #,notice:'Your homecook was successfully edited.'
   end
 
   def destroy

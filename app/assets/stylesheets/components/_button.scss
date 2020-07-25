@@ -9,6 +9,13 @@
   margin-right: 16px;
 }
 
+.btn-homecook-fixed {
+ position: fixed;
+    width: 240px;
+    right: 0;
+    margin-right: 10%;
+}
+
 .btn-homecook:hover {
   background: #ffc65a;
   color: white;
@@ -22,6 +29,11 @@
 .btn_seemore .btn-update-homecook{
   text-align: center;
   margin:50px auto;
+}
+
+.btn-update-homecook {
+  color: white;
+
 }
 
 
