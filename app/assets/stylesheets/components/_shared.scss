@@ -49,6 +49,10 @@ html {
   color: #ffc65a;
 }
 
+.fa-trash-alt:before {
+    color: #495057;
+}
+
 h1 {
   font-family: 'Rowdies', cursive;
 }
@@ -68,7 +72,7 @@ h1 {
   font-family: 'Rowdies', cursive;
   color: #424242;
   padding: 0 20px;
-  background:linear-gradient(transparent 55%, rgba(247, 181, 0, 0.8) 45%);
+  background:linear-gradient(transparent 55%, #ffc65ac7 45%);
   border-bottom:3px solid #FA6400;
 }
 
@@ -161,4 +165,52 @@ h1 {
   background-repeat: no-repeat;
   background-size:cover;
   border-radius:3%;
+}
+
+.filter-block {
+  margin-bottom:20px;
+}
+
+#filter-cuisine{
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 2px 3px;
+}
+
+#sort-price {
+border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 2px 3px;
+  color:#333
+}
+
+.fa-random:before {
+  color: #f7b500;
+}
+
+.fa-filter:before {
+  color: #ffc65a;
+}
+
+
+.small-text{
+  margin-left:70px;
+  position: relative;
+  top: 5px;
+}
+
+.small-text a {
+  color:#343a40;
+}
+
+.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label  {
+  color:#343a40;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+  border-color: #cccccc;
+}
+
+.modal-title {
+  font-weight:600;
 }

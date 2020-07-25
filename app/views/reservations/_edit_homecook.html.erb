@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit your homecook profile</h5>
-        <%= link_to "Delete" %>
+        <div class='small-text'><i class="fas fa-trash-alt">&thinsp;</i><%= link_to "Or Delete?" %> </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,7 +16,7 @@
             <%= r.input :introduction %>
             <%= r.input :tag_list, as: :check_boxes, collection: Homecook::CUISINES, label: 'Types of Cuisines' %>
             <%= r.input :photos, as: :file, input_html: { multiple: true }  %>
-            <%= r.submit %>
+            <%= r.submit 'Update profile', class: 'yellow-button' %>
           <% end %>
 
         <% end %>

@@ -13,6 +13,7 @@
 </div>
 
 <div class = 'container'>
+  <div class ='filter-block'>
     <i class="fas fa-random"></i> Sort by
     <select id="sort-price">
       <option value="">Price</option>
@@ -33,6 +34,7 @@
       <option value = <%= cuisine %> <% if cuisine == @cuisine  %><%= selected="selected" %><% end %>><%= cuisine %></option>
       <% end %>
     </select>
+  </div>
 
   <div class="cards">
   <% @homecooks.each do |homecook| %>
