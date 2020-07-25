@@ -121,6 +121,37 @@
   padding: 4px 8px;
 }
 
+
 .booking-contact{
   color: gray;
+
+.review-cards {
+  display: flex;
+  flex-direction:row;
+  width:80%;
+  flex-wrap: wrap;
+  flex: 1 1 30%;
+  margin: 30px auto 16px;
+}
+
+.review-card {
+  width:260px;
+  margin-bottom:20px;
+  margin-right:24px;
+  height:96px;
+  border:1px solid #e2e2e2;
+  padding: 10px;
+  border-radius:5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.review-card:nth-child(n+9) {
+  display:none;
+
+}
+
+.review-card-detail {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
 }

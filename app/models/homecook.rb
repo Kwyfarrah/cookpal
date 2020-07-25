@@ -2,6 +2,7 @@ class Homecook < ApplicationRecord
   CUISINES = [ "Chinese", "Japanese", "Italian", "French", "Brazilian" ]
   belongs_to :user
   has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many_attached :photos
   acts_as_taggable_on :tags
 
