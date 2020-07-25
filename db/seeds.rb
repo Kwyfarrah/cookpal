@@ -67,4 +67,22 @@ end
     user_id: [11,12,13,14,15].sample,
     homecook_id: 1
     )
+
+
 puts 'Finished!'
+
+
+puts 'Creat 5 reivew for homecook:09'
+5.times do
+  Review.create(
+    rating: [4.5,4.6,4.7,4.8,4.9,5.0].sample,
+    content:['Really delicious!! highly recommended😋', 'I would say this is the best meal I have ever had😆','meh','Very sweet personality and such a delightful catering❣️','Love it❤️❤️❤️'].sample,
+    homecook_id: 9,
+    user_id:[2,3,4,5,6,7,8,10].sample
+    )
+end
+
+puts 'Finished'
+
+puts 'Create 5 reviews for homecook'
+
