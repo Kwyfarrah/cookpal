@@ -23,6 +23,12 @@
 </div>
 
 <div class = 'container'>
+    <i class="fas fa-random"></i> Sort by
+    <select id="sort-price">
+      <option value="">Price</option>
+      <option value="ASC">Low to High</option>
+      <option value="DESC">High to Low</option>
+    </select>
   <div class="cards">
   <% @homecooks.each do |homecook| %>
    <div class="card-category">
@@ -46,7 +52,6 @@
 
   </div>
   <% end %>
-
   </div>
 </div>
 </div>

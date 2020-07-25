@@ -8,13 +8,20 @@ class HomecooksController < ApplicationController
   def index
     search = params['search']
     if search.present?
-      @homecooks = policy_scope(Homecook).search_info(search)
+       @homecooks_search = policy_scope(Homecook).search_info(search)
     else
-      @homecooks = policy_scope(Homecook)
+       @homecooks_search = policy_scope(Homecook)
     end
-    #   @address = params['search']
-    #   @homecooks = policy_scope(Homecook).joins(:user).where("users.address ILIKE ?", "%#{@address}%")
+
+    if params['option'] == "ASC"
+        @homecooks = @homecooks_search.order('price_per_person ASC')
+      elsif params['option'] == "DESC"
+        @homecooks = @homecooks_search.order('price_per_person DESC')
+      else
+        @homecooks = @homecooks_search
+    end
   end
+
 
   def show
     @reservation = Reservation.new
