@@ -12,13 +12,13 @@
       <% end %>
     <% end %>
 
-  <div class="homecook-tab-wrapper <%= 'hidden' if current_user.homecooks.length == 0 || params[:tab] == "customer" %>">
-    <%= render partial: "homecook_tab", :locals => {:homecook_reservations => homecook_reservations} %>
-  </div>
+    <div class="homecook-tab-wrapper <%= 'hidden' if current_user.homecooks.length == 0 || params[:tab] == "customer" %>">
+      <%= render partial: "homecook_tab", :locals => {:homecook_reservations => homecook_reservations} %>
+    </div>
 
-  <div class="customer-tab-wrapper <%= 'hidden' unless params[:tab] == "customer" || current_user.homecooks.length ==0  %>">
-    <%= render partial: "customer_tab" %>
-  </div>
+    <div class="customer-tab-wrapper <%= 'hidden' unless params[:tab] == "customer" || current_user.homecooks.length ==0  %>">
+      <%= render partial: "customer_tab" %>
+    </div>
 
   </div>
 </div>
