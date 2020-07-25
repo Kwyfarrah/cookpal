@@ -32,11 +32,27 @@
   <div class = "title-middle-bold"> About Me </div>
   <div class = "text-medium"> <%= @homecook.introduction %> </div>
 
-  <div class = "title-middle-bold"> Date which is booked </div>
+<!--   <div class = "title-middle-bold"> Date which is booked </div>
   <div class = "text-medium"> <% @homecook.reservations.each do |reservation| %>
     <p><%= reservation.datetime.strftime("%Y-%m-%d %H:%M") %></p>
+  <% end %> -->
+
+  <div class = "title-middle-bold"> Reviews </div>
+  <div class ='review-cards'>
+
+  <% @homecook.reviews.each  do |review| %>
+  <div class = 'review-card'>
+  <div class = "review-card-detail">
+    <div><strong><%= review.user.name %></strong></div>
+    <div><%= review.rating %><i class="fas fa-star small-star"></i></div>
+  </div>
+  <%= review.content %>
+  </div>
   <% end %>
-</div>
+  </div>
+
+  <div class="review-button"> <div class="valid-button">Show all reviews</div></div>
+
 
 
 
