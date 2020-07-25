@@ -1,8 +1,8 @@
-<div class="homecook-tab booked <%= 'hidden' if homecook_reservations.length == 0  %> ">
+<div class="homecook-tab booked <%= 'hidden' if current_user.homecooks.length == 0  %> ">
   <% if current_user.homecooks.any? %>
     <div class="edit-homeccok-profile">
       <div class="btn-update-homecook">
-        <a class="btn btn-homecook" data-toggle="modal" data-target="#exampleModal" style="text-align: center"><i class="fas fa-edit"></i>Edit your homecook profile</a>
+        <a class="btn btn-homecook" data-toggle="modal" data-target="#editModal" style="text-align: center"><i class="fas fa-edit"></i>Edit your homecook profile</a>
       </div>
     </div>
   <% end %>
