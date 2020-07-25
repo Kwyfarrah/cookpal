@@ -4,10 +4,9 @@ class ReservationsController < ApplicationController
   before_action :find_homecook, only: [:create]
 
   def index
-    @reservations = Reservation.all
     @homecooks = current_user.homecooks
     @homecook = Homecook.new
-    @reservations = policy_scope(Reservation)
+    @reservations = policy_scope(Reservation).order('updated_at DESC')
   end
 
   def update
